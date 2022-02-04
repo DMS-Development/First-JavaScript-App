@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function game(userPick, compPick) {
+            let userScore = 0;
+            let compScore = 0;
+            let gameRound = 1;
+
+                for (gameround = 1; gameRound < 6; ++gameRound) {
+                    let userPick = prompt("Choose Rock, Paper, or Scissors!").toLowerCase();
+                    let choices = ["rock", "paper", "scissors"];
+                    compPick = choices[Math.floor(Math.random() * choices.length)];
+
+                    console.log(userPick, compPick);
+
+                    if (userPick == compPick) {
+                        ++userScore;
+                        ++compScore;
+                        console.log("It's a Tie! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "rock" && compPick == "paper") {
+                        ++compScore;
+                        console.log("Lost Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "paper" && compPick == "rock") {
+                        ++userScore
+                        console.log("Won Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "scissors" && compPick == "rock") {
+                        ++compScore;
+                        console.log("Lost Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "rock" && compPick == "scissors") {
+                        ++userScore;
+                        console.log("Won Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "paper" && compPick == "scissors") {
+                        ++compScore;
+                        console.log("Lost Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "scissors" && compPick == "paper") {
+                        ++userScore;
+                        console.log("Won Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    }
+
+                    if (gameRound == 5) {
+                    if (userScore > compScore) {
+                        return "You Won The Game! The Final Score is: " + userScore + " : " + compScore + " Refresh to Play Again!";
+                    } else if (compScore > userScore) {
+                        return "Computer Wins! The Final Score is: " + userScore + " : " + compScore + " Refresh to Try Again!";
+                    }else if ( userScore == compScore) {
+                        return "Its a Tie! The Final Score is: " + userScore + " : " + compScore + " Refresh to Play Again!";
+                    }
+                }
+            }
+                
+        }
+
+        console.log(game());
+
+    </script>
+    
+</body>
+</html>
