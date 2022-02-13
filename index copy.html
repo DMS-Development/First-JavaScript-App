@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // Plays game of rock paper scissors against computer opponent
+
+        function game(userPick, compPick) {
+
+            // Holds score and number of rounds
+
+            let userScore = 0;
+            let compScore = 0;
+            let gameRound = 1;
+
+                // Loops the entire game for five rounds
+
+                for (gameround = 1; gameRound < 6; ++gameRound) {
+
+                    // Recieves choice of Rock Paper Scissors from user and lowercases response to make it case insensitve
+                    // Also randomly generates computer choice from array of "Rock Paper Scissors"
+                    
+                    let userPick = prompt("Choose Rock, Paper, or Scissors!").toLowerCase();
+                    let choices = ["rock", "paper", "scissors"];
+                    compPick = choices[Math.floor(Math.random() * choices.length)];
+
+                    // Outputs user and computer choices
+
+                    console.log(userPick, compPick);
+
+                    // Determines outcome of choices and adds score to the winner
+
+                    if (userPick == compPick) {
+                        ++userScore;
+                        ++compScore;
+                        console.log("It's a Tie! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "rock" && compPick == "paper") {
+                        ++compScore;
+                        console.log("Lost Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "paper" && compPick == "rock") {
+                        ++userScore
+                        console.log("Won Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "scissors" && compPick == "rock") {
+                        ++compScore;
+                        console.log("Lost Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "rock" && compPick == "scissors") {
+                        ++userScore;
+                        console.log("Won Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "paper" && compPick == "scissors") {
+                        ++compScore;
+                        console.log("Lost Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    } else if (userPick == "scissors" && compPick == "paper") {
+                        ++userScore;
+                        console.log("Won Round! " + "Player: " + userScore, "Computer: " + compScore);
+                    }
+
+                    // Determines if program is on the last round and outputs winner or loser message
+
+                    if (gameRound == 5) {
+                        if (userScore > compScore) {
+                            return "You Won The Game! The Final Score is: " + userScore + " : " + compScore + " Refresh to Play Again!";
+                        } else if (compScore > userScore) {
+                            return "Computer Wins! The Final Score is: " + userScore + " : " + compScore + " Refresh to Try Again!";
+                        }else if ( userScore == compScore) {
+                            return "Its a Tie! The Final Score is: " + userScore + " : " + compScore + " Refresh to Play Again!";
+                        }
+                }
+            }
+                
+        }
+
+        // Runs game
+
+        console.log(game());
+
+    </script>
+    
+</body>
+</html>
